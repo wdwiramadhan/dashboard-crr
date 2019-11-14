@@ -22,6 +22,11 @@
 <script>
 import {mapActions, mapGetters, mapMutations, mapState} from 'vuex'
 export default {
+  created(){
+     if (this.isAuth) {
+      this.$router.push({ name: "home" });
+    }
+  },
   data: () => ({
     user:{
       email: '',
@@ -34,7 +39,7 @@ export default {
     ...mapState(["errors"])
   },
   methods:{
-    ...mapActions("Auth", ["submit"]), //MENGISIASI FUNGSI submit() DARI VUEX AGAR DAPAT DIGUNAKAN PADA COMPONENT TERKAIT. submit() BERASAL DARI ACTION PADA FOLDER STORES/auth.js
+    ...mapActions("Auth", ["submit"]),
     ...mapMutations(["CLEAR_ERRORS"]),
     login(){
       this.submit(this.user).then(() => {
