@@ -16,7 +16,7 @@ const actions = {
       $axios.post(`/auth/login`, payload)
       .then((response) => {
         if(response.data.status == true){
-          localStorage.setItem('token', response.data.data)
+          localStorage.setItem('token', response.data.result.access_token)
           commit('SET_TOKEN', response.data.data, { root: true })
         }else {
           commit('SET_ERRORS', { invalid: 'Wrong Email/Password' }, { root: true })
