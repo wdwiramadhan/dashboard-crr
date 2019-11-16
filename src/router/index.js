@@ -8,10 +8,8 @@ import IndexProject from '../views/dashboard/project/Index'
 import Project from '../views/dashboard/project/Project'
 import Store from '../store/index'
 import IndexTimeline from '../views/timeline/Index'
-// import IndexPost from '../views/timeline/post/Index'
 import Post from '../views/timeline/Posts'
-// import IndexComment from '../views/timeline/comment/Index'
-// import Comment from '../views/timeline/comment/Comment'
+import Comment from '../views/timeline/Comment'
 
 Vue.use(VueRouter)
 
@@ -51,15 +49,20 @@ const routes = [
     ]
   },
   {
-    path: '/',
+    path: '/timeline',
     component: IndexTimeline,
     meta: { requiresAuth: true },
     children: [
       {
         path:'',
-        name:'post',
+        name:'timeline',
         component: Post
-      }
+      },
+      {
+        path:'comment',
+        name:'timeline.comment',
+        component: Comment
+      },
     ]
   }
 ]
