@@ -55,9 +55,9 @@ export default {
     return{
       drawer: false,
       menus:[
-        {title:'Dashboard', icon: 'mdi-view-dashboard', route:'/'},
-        {title:'My Projects', icon:'mdi-folder', route:'/project'},
-        {title:'Team', icon:'mdi-account-multiple', route:'/team'},
+        {title:'Dashboard', icon: 'mdi-view-dashboard', route:'/dashboard/home'},
+        {title:'My Projects', icon:'mdi-folder', route:'/dashboard/project'},
+        {title:'Team', icon:'mdi-account-multiple', route:'/dashboard/team'},
       ]
     }
   }

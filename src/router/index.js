@@ -3,18 +3,19 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/auth/Login'
 import Logout from '../views/auth/Logout'
-import IndexProject from '../views/project/Index'
-import Project from '../views/project/Project'
+import IndexDashboard from '../views/dashboard/Index'
+import IndexProject from '../views/dashboard/project/Index'
+import Project from '../views/dashboard/project/Project'
 import Store from '../store/index'
+import IndexTimeline from '../views/timeline/Index'
+// import IndexPost from '../views/timeline/post/Index'
+import Post from '../views/timeline/Posts'
+// import IndexComment from '../views/timeline/comment/Index'
+// import Comment from '../views/timeline/comment/Comment'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: Home
-  },
   {
     path: '/login',
     name: 'login',
@@ -26,14 +27,38 @@ const routes = [
     component: Logout
   },
   {
-    path: '/project',
-    component: IndexProject,
+    path: '/dashboard',
+    component: IndexDashboard,
+    meta: { requiresAuth: true },
+    children: [
+      {
+        path: 'project/',
+        component: IndexProject,
+        meta: { requiresAuth: true },
+        children: [
+          {
+            path:'',
+            name:'project',
+            component: Project
+          }
+        ]
+      },
+      {
+        path: 'home/',
+        name: 'home',
+        component: Home
+      },
+    ]
+  },
+  {
+    path: '/',
+    component: IndexTimeline,
     meta: { requiresAuth: true },
     children: [
       {
         path:'',
-        name:'project',
-        component: Project
+        name:'post',
+        component: Post
       }
     ]
   }
