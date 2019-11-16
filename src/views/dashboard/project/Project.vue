@@ -23,17 +23,17 @@
   </div>
 </template>
 <script>
-export default {
-  created(){
-    this.getProjects()
-  },
-  computed:{
-    ...mapActions('project',{
-       projects : state=>state.projects
-    })
-  },
-  methods:{
-    ...mapActions('project',['getProjects'])
-  }
-}
-</script>
+// export default {
+//   created(){
+//     this.getProjects()
+//   },
+//   computed:{
+//     ...mapActions('project',{
+//        projects : state=>state.projects
+//     })
+//   },
+//   methods:{
+//     ...mapActions('project',['getProjects'])
+//   }
+// }
+// </script>

@@ -1,11 +1,11 @@
 <template>
   <v-app>
-    <v-content>
-      <router-view></router-view>
-    </v-content>
+    <navbar></navbar>
+    <router-view></router-view>
   </v-app>
 </template>
 <script>
+import Navbar from '../../components/Navbar'
 import { mapState, mapGetters} from 'vuex'
 export default {
   name: 'App',
@@ -16,5 +16,8 @@ export default {
   data: () => ({
     //
   }),
+  components:{
+    'navbar' : Navbar
+  }
 };
 </script>
