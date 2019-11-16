@@ -29,6 +29,10 @@ const actions = {
         }
       })
     })
+  },
+  logout({commit}){
+    commit('CLEAR_TOKEN', null, {root:true})
+    localStorage.removeItem('token')
   }
 }
 

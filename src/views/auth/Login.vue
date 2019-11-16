@@ -2,16 +2,12 @@
   <div class="login">
     <v-container>
       <v-row justify="center" class="my-5">
-        <v-col cols="12" md="4" lg="4" >
+        <v-col cols="12" md="4" lg="4">
           <v-card class="pa-5">
             <v-form>
               <v-text-field v-model="user.email" label="Email"></v-text-field>
-              <v-text-field
-                v-model="user.password"
-                label="password"
-                type="password"
-              ></v-text-field>
-              <v-btn @click="login" class="primary">Login</v-btn>
+              <v-text-field v-model="user.password" label="password" type="password"></v-text-field>
+              <v-btn @click="login" class="primary" :disabled="loading" :loading="loading" >Login</v-btn>
             </v-form>
           </v-card>
         </v-col>
@@ -20,35 +16,38 @@
   </div>
 </template>
 <script>
-import {mapActions, mapGetters, mapMutations, mapState} from 'vuex'
+import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
 export default {
-  created(){
-     if (this.isAuth) {
-      this.$router.push({ name: "home" });
+  data: () => ({
+    user: {
+      email: "",
+      password: "",
+      remember_me: false
+    },
+    loading : false
+  }),
+  created() {
+    if (this.isLogedIn) {
+      this.$router.push({ name: "home" })
     }
   },
-  data: () => ({
-    user:{
-      email: '',
-      password: '',
-      remember_me: false
-    }
-  }),
   computed: {
-    ...mapGetters(["isAuth"]), 
+    ...mapGetters(["isLogedIn"]),
     ...mapState(["errors"])
   },
-  methods:{
+  methods: {
     ...mapActions("Auth", ["submit"]),
     ...mapMutations(["CLEAR_ERRORS"]),
-    login(){
-      this.submit(this.user).then(() => {
-        if(this.isAuth){
-          this.CLEAR_ERRORS()
-          this.$router.push({name: 'home'})
+    login() {
+      this.loading = true
+      this.submit(this.user)
+      .then(() => {
+        this.loading = false
+        if(this.isLogedIn){
+        this.$router.push({ name: 'project' })
         }
       })
     }
   }
-}
+};
 </script>

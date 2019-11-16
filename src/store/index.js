@@ -13,12 +13,15 @@ export default new Vuex.Store({
     errors:[]
   },
   getters:{
-    isAuth: state => {
-      return state.token != "null" && state.token != null
+    isLogedIn(state){
+      return state.token !== null ? true : false;
     }
   },
   mutations: {
     SET_TOKEN(state, payload) {
+      state.token = payload
+    },
+    CLEAR_TOKEN(state, payload){
       state.token = payload
     },
     SET_ERRORS(state, payload) {
