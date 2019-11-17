@@ -91,13 +91,16 @@ export default {
     this.project.undone = getCountProjectUndone.data.result.count
     const getCountProjectTotal = await this.getCountProject()
     this.project.total = getCountProjectTotal.data.result.count
-    await this.getChartdata()
+    this.$nextTick(() => {
+      this.getPostType()
+      this.getPostStatus()
+    })    
   },
   methods: {
     async getCountProject(params) {
       return await axios.get('https://dch.doscom.org/api/projects/count', {
         headers : {
-            'Authorization': `Bearer ${this.token}`          
+            'Authorization': `Bearer ${this.$store.state.token}`          
         },
         params: params ? params : ""
       })
@@ -105,7 +108,7 @@ export default {
     async getCountPost(params) {
       return await axios.get('https://dch.doscom.org/api/posts/count', {
         headers: {
-          'Authorization': `Bearer ${this.token}`
+          'Authorization': `Bearer ${this.$store.state.token}`
         },
         params: params ? params : ""
       })
@@ -133,11 +136,5 @@ export default {
       })
     }
   },
-  mounted() {
-    this.$nextTick(() => {
-      this.getPostType()
-      this.getPostStatus()
-    })    
-  }
 };
 </script>
