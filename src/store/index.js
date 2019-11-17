@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Auth from './modules/auth'
 import Post from './modules/post'
+import Project from './modules/project'
 
 Vue.use(Vuex)
 
@@ -9,6 +10,7 @@ export default new Vuex.Store({
   modules:{
     Auth,
     Post,
+    Project
   },
   state: {
     token: localStorage.getItem('token'),

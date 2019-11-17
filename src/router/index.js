@@ -8,10 +8,11 @@ import IndexProject from '../views/dashboard/project/Index'
 import Project from '../views/dashboard/project/Project'
 import Store from '../store/index'
 import IndexTimeline from '../views/timeline/Index'
-// import IndexPost from '../views/timeline/post/Index'
 import Post from '../views/timeline/Posts'
-// import IndexComment from '../views/timeline/comment/Index'
-// import Comment from '../views/timeline/comment/Comment'
+import CreatePost from '../views/timeline/CreatePost'
+import Comment from '../views/timeline/Comment'
+import Projects from '../views/timeline/Projects'
+//import Camera from '../views/timeline/Camera'
 
 Vue.use(VueRouter)
 
@@ -51,15 +52,35 @@ const routes = [
     ]
   },
   {
-    path: '/',
+    path: '/timeline',
     component: IndexTimeline,
     meta: { requiresAuth: true },
     children: [
       {
-        path:'',
-        name:'post',
+        path: '',
+        name:'timeline.project',
+        component: Projects
+      },
+      {
+        path:'post/:id ',
+        name:'timeline.post',
         component: Post
-      }
+      },
+      {
+        path:'comment',
+        name:'timeline.comment',
+        component: Comment
+      },
+      {
+        path:'createpost/:id',
+        name:'timeline.createpost',
+        component: CreatePost
+      },
+      // {
+      //   path:'camera',
+      //   name:'timeline.camera',
+      //   component: Camera
+      // },
     ]
   }
 ]

@@ -21,7 +21,26 @@ const actions = {
         resolve(response.data)
       })
     })
-  }
+  }, 
+  getAllPostById({commit}, payload){
+    return new Promise((resolve) => {
+      $axios.get(`/posts?project_id=${payload}`)
+      .then((response) => {
+        commit('ASSIGN_DATA', response.data.result)
+        resolve(response.data)
+      })
+    })
+  },
+  addPost({dispatch}, payload){
+    return new Promise((resolve) => {
+      $axios.post(`/posts`, payload)
+      .then((response) => {
+        dispatch('getAllPost').then(() => {
+          resolve(response.data)
+        })
+      })
+    })
+  },
 }
 
 export default {
