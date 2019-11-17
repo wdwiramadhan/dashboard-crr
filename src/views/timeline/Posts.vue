@@ -19,6 +19,33 @@
               <v-list-item-title v-text="post.user.username"></v-list-item-title>
               <v-list-item-subtitle v-text="post.user.role"></v-list-item-subtitle>
             </v-list-item-content>
+            <div v-if="post.type == 'report'">
+              <v-chip
+                class="ma-2"
+                color="yellow"
+                text-color="white"
+              >
+                Report
+              </v-chip>
+            </div>
+            <div v-else-if="post.type == 'accident'">
+              <v-chip
+                class="ma-2"
+                color="red"
+                text-color="white"
+              >
+                Accident
+              </v-chip>
+            </div>
+            <div v-else>
+                <v-chip
+                class="ma-2"
+                color="blue"
+                text-color="white"
+              >
+                Progress
+              </v-chip>
+            </div>
           </v-list-item>
           <v-img
             src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
@@ -37,6 +64,17 @@
               </router-link>
             </v-card-actions>
           </v-card-subtitle>
+          <v-card-actions>
+            <div v-if="post.status == 'unsolved'">
+              <v-btn
+                class="ma-2 white--text"
+                color="red"
+                text
+              >
+                Unsolved
+              </v-btn>
+            </div>          
+          </v-card-actions>
           </v-card>
         </v-col>
       </v-row>
