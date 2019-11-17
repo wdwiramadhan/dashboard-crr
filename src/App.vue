@@ -11,7 +11,7 @@ import { mapState, mapGetters} from 'vuex'
 export default {
   name: 'App',
   created(){
-    this.$router.push({name: 'timeline.project'})
+    // this.$router.push({name: 'timeline.project'})
   },
   computed:{
     ...mapState(["token"]),
