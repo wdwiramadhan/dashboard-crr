@@ -2,11 +2,20 @@ import $axios from '../../api'
 
 const state = () => ({
   posts: [],
+  post:{
+    user_id: '',
+    title: '',
+    description: '',
+    photo_id: ''
+  }
 })
 
 const mutations = {
   ASSIGN_DATA(state, payload){
     state.posts = payload
+  },
+  ASSIGN_FORM(state, payload){
+    state.post = payload
   }
 }
 
@@ -41,6 +50,15 @@ const actions = {
       })
     })
   },
+  getPostById({commit}, payload){
+    return new Promise((resolve) => {
+      $axios.get(`/posts/${payload}`)
+      .then((response) => {
+        commit('ASSIGN_FORM', response.data.result)
+        resolve(response.data)
+      })
+    })
+  }
 }
 
 export default {

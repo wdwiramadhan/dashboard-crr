@@ -67,7 +67,7 @@ const routes = [
         component: Post
       },
       {
-        path:'comment',
+        path:'comment/:id',
         name:'timeline.comment',
         component: Comment
       },

@@ -24,7 +24,7 @@
       </v-btn>
       </router-link>
     </div>
-    <router-link style="text-decoration:none" :to="{name: 'timeline.createpost'}">
+    <router-link style="text-decoration:none" :to="{name: 'timeline.project'}">
     <v-btn>
       <v-icon>mdi-account</v-icon>
     </v-btn>
