@@ -44,7 +44,7 @@ export default {
       .then(() => {
         this.loading = false
         if(this.isLogedIn){
-        this.$router.push({ name: 'project' })
+        this.$router.push({name: 'project'})
         }
       })
     }
