@@ -1,14 +1,14 @@
 <template>
   <nav>
-    <v-app-bar flat app  color="grey lighten-4">
+    <v-app-bar flat app dark color="deep purple">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>
-        <span class="grey--text">
+        <span>
           Constraction Realtime Report
         </span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-        <v-btn :to="{name: 'logout'}" text color="grey">
+        <v-btn :to="{name: 'logout'}" text>
           <span>Logout</span>
           <v-icon right>mdi-exit-to-app</v-icon>
         </v-btn>
