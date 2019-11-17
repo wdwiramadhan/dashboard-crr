@@ -1,6 +1,6 @@
 import $axios from '../../api'
 
-const actions = () =>({
+const state = () =>({
   projects: [],
   page: []
 })
@@ -12,12 +12,12 @@ const mutations = {
 }
 
 const actions = {
-  getProjects({commit, state}, payload){
-    let search = typeof payload != 'undefined' ? payload:''
+  getProjects({commit}){
+   // let search = typeof payload != 'undefined' ? payload:''
     return new Promise((resolve) =>{
-      $axios.get(`/project?page=${state.page}&q=${search}`)
+      $axios.get(`/projects`)
       .then((response) => {
-        commit('ASSIGN_DATA', response.data)
+        commit('ASSIGN_DATA', response.data.result.projects)
         resolve(response.data)
       })
     })
@@ -26,7 +26,7 @@ const actions = {
 
 export default {
   namespaced: true,
-  actions,
+  state,
   mutations,
   actions
 }

@@ -9,13 +9,16 @@ import Project from '../views/dashboard/project/Project'
 import Store from '../store/index'
 import IndexTimeline from '../views/timeline/Index'
 import Post from '../views/timeline/Posts'
+import CreatePost from '../views/timeline/CreatePost'
 import Comment from '../views/timeline/Comment'
+import Projects from '../views/timeline/Projects'
+//import Camera from '../views/timeline/Camera'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/login',
+    path: ' ',
     name: 'login',
     component: Login
   },
@@ -54,8 +57,13 @@ const routes = [
     meta: { requiresAuth: true },
     children: [
       {
-        path:'',
-        name:'timeline',
+        path: '',
+        name:'timeline.project',
+        component: Projects
+      },
+      {
+        path:'post/:id ',
+        name:'timeline.post',
         component: Post
       },
       {
@@ -63,6 +71,16 @@ const routes = [
         name:'timeline.comment',
         component: Comment
       },
+      {
+        path:'createpost/:id',
+        name:'timeline.createpost',
+        component: CreatePost
+      },
+      // {
+      //   path:'camera',
+      //   name:'timeline.camera',
+      //   component: Camera
+      // },
     ]
   }
 ]

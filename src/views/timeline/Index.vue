@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar-timeline></navbar-timeline>
+    <navbar-timeline v-if="$route.name !== 'timeline.comment' && $route.name !== 'timeline.createpost'" ></navbar-timeline>
     <router-view></router-view>
     <bottom-navigation></bottom-navigation>
   </div>
