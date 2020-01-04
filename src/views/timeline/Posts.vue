@@ -60,7 +60,7 @@
           <v-card-subtitle>
             <v-card-actions>
               <router-link style="text-decoration:none" :to="{name: 'timeline.comment',  params:{id: post.id}}">
-                  <div>View all comment</div>
+                  <div>View all comments</div>
               </router-link>
             </v-card-actions>
           </v-card-subtitle>
